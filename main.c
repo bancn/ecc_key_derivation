@@ -4,6 +4,7 @@
 
 int main() {
 
-    CheckKey();
+//    GenerateECCKey();
+    testVerifyKey();
     return 0;
 }

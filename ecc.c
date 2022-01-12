@@ -48,12 +48,12 @@ void GenerateECCKey()
 
         result = mbedtls_mpi_write_binary(&keypair.d, pri, 32);
         CHECK_RESULT(result);
-        dump_buf("privkey:", pri, 32);
+        print_buf("privkey:", pri, 32);
 
 
         result = mbedtls_ecp_point_write_binary(&keypair.grp, &keypair.Q, MBEDTLS_ECP_PF_UNCOMPRESSED, &olen, pub, 100);
         CHECK_RESULT(result);
-        dump_buf("pubkey", pub, olen);
+        print_buf("pubkey", pub, olen);
 
         result = mbedtls_ecp_check_pub_priv(&keypair, &keypair);
         CHECK_RESULT(result);

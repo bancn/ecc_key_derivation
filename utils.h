@@ -6,6 +6,8 @@
 #define ECC_UTILS_H
 
 #include <stdint.h>
+#include <mbedtls/bignum.h>
+#include <mbedtls/ecp.h>
 
 #define assert_exit(cond, ret) \
     do { if (!(cond)) { \
@@ -13,13 +15,16 @@
         goto cleanup; \
     } } while (0)
 
-#define CHECK_RESULT(ret) do { \
+#define CHECK_RESULT(ret)  \
     if (ret != 0) {            \
         break;                 \
-    }                          \
-} while(0)
+    }
+
 
 void dump_buf(char *info, uint8_t *buf, uint32_t len);
-void GetECCKey();
+void print_buf(char *info, uint8_t *buf, uint32_t len);
+void GetECDHKey();
 void CheckKey();
+uint32_t GeneratePubKeyByPrivKey(mbedtls_mpi *privKey, mbedtls_ecp_point *pubKey);
+void testVerifyKey();
 #endif //ECC_UTILS_H
